@@ -1,0 +1,124 @@
+<Test>
+    HomeScreen:
+    AddScreen:
+    ProfileScreen:
+<HomeScreen>:
+    name: 'Home'
+    id: lol
+    MDBoxLayout:
+        id: home_box
+        orientation: 'vertical'
+        md_bg_color: (.98, .92, .94, 1)
+        MDLabel:
+            text: 'Benzo'
+            padding: 20,0
+            font_size: 30
+            halign: 'left'
+            size_hint: 1,.1
+        ScrollView:
+            id: home_scroll
+            size_hint: 1,.5
+            GridLayout:
+                id: cards
+                size_hint_y: None
+                cols: 2
+                height: self.minimum_height
+                width: self.minimum_width
+                spacing: 18,20
+                padding: 20
+        MDBottomNavigation:
+            panel_color: (1, .89, .91, 1)
+            size_hint: 1,.05
+
+            MDBottomNavigationItem:
+                icon: 'home-variant-outline'
+                on_tab_press: root.manager.current = 'Home'
+
+
+            MDBottomNavigationItem:
+                icon: 'plus-circle-outline'
+                on_tab_press: root.manager.current = 'Add'
+
+
+            MDBottomNavigationItem:
+                icon: 'account-box-outline'
+                on_tab_press: root.manager.current = 'Profile'
+<AddScreen>:
+    name: 'Add'
+    MDBoxLayout:
+        md_bg_color: (.98, .92, .94, 1)
+        orientation: 'vertical'
+        spacing: 450
+        MDBoxLayout:
+            orientation: 'vertical'
+            spacing: 20
+            padding: 30, 0
+            MDTextField:
+                id: title
+                text: 'Название'
+                max_text_length: 30
+                font_size: 30
+                mode: 'fill'
+                icon_left: 'help'
+                halign: 'left'
+            MDTextField:
+                id: info
+                text: 'В разработке...'
+                mode: 'fill'
+                color_mode: 'custom'
+                fill_color: [1, .89, .91, 1]
+                icon_left: 'format-title'
+                multiline: True
+                auto_indent: True
+                halign: 'left'
+            MDIconButton:
+                icon_size: 50
+                icon: 'check-circle-outline'
+                on_press: root.manager.get_screen('Home').add_card()
+        MDBottomNavigation:
+            size_hint: 1,.05
+            panel_color: (1, .89, .91, 1)
+            MDBottomNavigationItem:
+                icon: 'home-variant-outline'
+                on_tab_press: root.manager.current = 'Home'
+
+
+            MDBottomNavigationItem:
+                icon: 'plus-circle-outline'
+
+
+            MDBottomNavigationItem:
+                icon: 'account-box-outline'
+                on_tab_press: root.manager.current = 'Profile'
+
+
+<ProfileScreen>:
+    name: 'Profile'
+    MDBoxLayout:
+        orientation: 'vertical'
+        md_bg_color: (.98, .92, .94, 1)
+        spacing: 600
+        MDAnchorLayout:
+            id: profile_box
+            orientation: 'vertical'
+            MDRectangleFlatButton:
+                text: 'Кто мы?'
+                on_press: root.about_us()
+            MDLabel:
+                text: ''
+                id: us
+
+        MDBottomNavigation:
+            size_hint: 1,.05
+            panel_color: (1, .89, .91, 1)
+            MDBottomNavigationItem:
+                icon: 'home-variant-outline'
+                on_tab_press: root.manager.current = 'Home'
+
+
+            MDBottomNavigationItem:
+                icon: 'plus-circle-outline'
+                on_tab_press: root.manager.current = 'Add'
+
+            MDBottomNavigationItem:
+                icon: 'account-box-outline'
